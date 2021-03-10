@@ -1,0 +1,114 @@
+
+
+function quebraNumero(){
+    var number = window.document.getElementById("cpf").value
+    
+    output = []
+    sNumber = number.toString()
+
+       
+
+        for (var i = 0, len = sNumber.length; i < len; i += 1) {
+        output.push(+sNumber.charAt(i))
+        }
+    
+        return output
+    
+    }
+    
+    
+    function primeiroDigito(){
+    
+    var sequencia1 = new quebraNumero()
+    
+    mult = 10 
+    var numbers = []
+    var soma = 0
+    
+        for (var i=0; i<9; i++){
+    
+            numbers = sequencia1[i]*mult
+            mult--
+            soma += numbers
+            //console.log(numbers)
+            //console.log(soma)
+    
+        }
+        digito1 = (11-(soma%11))
+        //console.log(digito1)
+        
+        return digito1
+    
+    
+    
+    }
+    
+    
+    function segundoDigito(){
+    
+        var sequencia2 = new quebraNumero()
+    
+    
+    
+        mult=11
+        numbers = []
+        soma=0
+    
+        for (var i=0; i<10; i++){
+            numbers = sequencia2[i]*mult
+            mult--
+            soma+=numbers
+    
+        }
+    
+        digito2 = (11-(soma%11))
+        //console.log(digito2)
+        
+        return digito2
+    
+    }
+    
+    
+    function validaCPF(){
+        var nome = document.getElementById("username").value
+        //nome = 'Heric'
+         resultado = document.getElementById("result")
+        var showcpf = document.getElementById("cpf").value
+         //showcpf = 39845398863
+
+
+        var r1 = primeiroDigito().toString()
+        var r2 = segundoDigito().toString()
+    
+        var cpf = quebraNumero()
+        //cpf = 222222222
+        
+    
+        n1 = cpf[9].toString()
+        n2 = cpf[10].toString()
+    
+        resultCalc = r1+r2
+        cpfInput = n1+n2
+        console.log(resultCalc)
+        //console.log(cpfInput)
+        var valido = ''
+        if(resultCalc===cpfInput){
+            valido = true
+        }else{
+            valido = false
+        }
+        
+
+        resultado.innerHTML = `${nome}, ${showcpf}
+         = ${valido}`
+
+    }
+
+
+    //console.log(quebraNumero())
+    
+    //primeiroDigito()
+    
+    //segundoDigito()
+    
+    console.log(validaCPF())
